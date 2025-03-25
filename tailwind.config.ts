@@ -63,13 +63,15 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        skilltrack: {
-          blue: "#0D9ED3",
+        aarush: {
+          primary: "#3B4EDD", // Professional blue
+          secondary: "#6C4DE6", // Secondary purple
           navy: "#1A2238",
           charcoal: "#222831",
           silver: "#F1F2F6",
           gray: "#8E9196",
           light: "#F8F9FA",
+          accent: "#FF6B6B", // Accent color for highlights
         },
       },
       borderRadius: {
@@ -126,6 +128,7 @@ export default {
       boxShadow: {
         smooth: "0 4px 20px rgba(0, 0, 0, 0.05)",
         card: "0 2px 12px rgba(0, 0, 0, 0.08)",
+        elevated: "0 10px 30px rgba(0, 0, 0, 0.1)",
       },
     },
   },

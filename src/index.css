@@ -16,7 +16,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 215 25% 27%;
 
-    --primary: 200 97% 44%;
+    --primary: 230 60% 50%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 217 32% 17%;
@@ -33,7 +33,7 @@
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 200 97% 44%;
+    --ring: 230 60% 50%;
 
     --radius: 0.75rem;
   }
@@ -64,40 +64,40 @@
     @apply bg-white/70 backdrop-blur-sm border border-white/20 shadow-smooth;
   }
   
-  .btn-skilltrack {
-    @apply bg-skilltrack-blue text-white px-5 py-2.5 rounded-lg font-medium shadow-sm 
+  .btn-aarush {
+    @apply bg-aarush-primary text-white px-5 py-2.5 rounded-lg font-medium shadow-sm 
     hover:shadow-md transition-all duration-300 focus:outline-none focus:ring-2 
-    focus:ring-skilltrack-blue/50 focus:ring-offset-2;
+    focus:ring-aarush-primary/50 focus:ring-offset-2;
   }
   
   .btn-secondary {
-    @apply bg-skilltrack-silver text-skilltrack-charcoal px-5 py-2.5 rounded-lg font-medium 
-    hover:bg-skilltrack-silver/90 transition-all duration-300 focus:outline-none focus:ring-2 
-    focus:ring-skilltrack-silver/50 focus:ring-offset-2;
+    @apply bg-aarush-silver text-aarush-charcoal px-5 py-2.5 rounded-lg font-medium 
+    hover:bg-aarush-silver/90 transition-all duration-300 focus:outline-none focus:ring-2 
+    focus:ring-aarush-silver/50 focus:ring-offset-2;
   }
   
-  .input-skilltrack {
-    @apply bg-white border border-skilltrack-silver/60 rounded-lg px-4 py-2.5 
-    focus:border-skilltrack-blue focus:ring-1 focus:ring-skilltrack-blue/50 
+  .input-aarush {
+    @apply bg-white border border-aarush-silver/60 rounded-lg px-4 py-2.5 
+    focus:border-aarush-primary focus:ring-1 focus:ring-aarush-primary/50 
     focus:outline-none transition-all duration-300;
   }
   
-  .card-skilltrack {
-    @apply rounded-xl border border-skilltrack-silver/20 shadow-card bg-white p-6 
+  .card-aarush {
+    @apply rounded-xl border border-aarush-silver/20 shadow-card bg-white p-6 
     hover:shadow-md transition-all duration-300;
   }
   
-  .badge-skilltrack {
+  .badge-aarush {
     @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium 
-    bg-skilltrack-blue/10 text-skilltrack-blue;
+    bg-aarush-primary/10 text-aarush-primary;
   }
   
   .progress-bar {
-    @apply relative h-2 w-full bg-skilltrack-silver/30 rounded-full overflow-hidden;
+    @apply relative h-2 w-full bg-aarush-silver/30 rounded-full overflow-hidden;
   }
   
   .progress-value {
-    @apply absolute left-0 top-0 h-full bg-skilltrack-blue rounded-full;
+    @apply absolute left-0 top-0 h-full bg-aarush-primary rounded-full;
   }
 }
 

@@ -1,10 +1,9 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import SkillCard from "../components/SkillCard";
 import CertificationCard from "../components/CertificationCard";
-import { Plus, Certificate, Briefcase, BarChart2, ChevronRight, Award, Share2, User } from "lucide-react";
+import { Plus, Award, Briefcase, BarChart2, ChevronRight, Share2, User } from "lucide-react";
 import { toast } from "sonner";
 
 // Mock data for skills
@@ -231,7 +230,7 @@ const Dashboard = () => {
                       : "border-transparent text-preskilet-gray hover:text-preskilet-charcoal hover:border-preskilet-silver"
                   }`}
                 >
-                  <Certificate size={18} />
+                  <Award size={18} />
                   <span>Certifications</span>
                 </button>
               </nav>
@@ -284,7 +283,7 @@ const Dashboard = () => {
                 </div>
                 {certificationsData.length === 0 && (
                   <div className="text-center py-16">
-                    <Certificate size={48} className="mx-auto text-preskilet-silver mb-4" />
+                    <Award size={48} className="mx-auto text-preskilet-silver mb-4" />
                     <h3 className="text-xl font-medium text-preskilet-charcoal mb-2">No certifications added yet</h3>
                     <p className="text-preskilet-gray mb-6">
                       Showcase your achievements by adding your certifications

@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import { Eye, EyeOff, ArrowRight, Lock, Mail, User } from "lucide-react";
+import { Eye, EyeOff, ArrowRight, Lock, Mail, User, ShieldCheck } from "lucide-react";
 import { toast } from "sonner";
 
 const Login = () => {
@@ -26,9 +26,6 @@ const Login = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // In a real app, we would call the authentication API here
-    // For now, we'll simulate a successful login/registration
-    
     // Validation
     if (!email || !password || (!isLogin && !name)) {
       toast.error("Please fill in all fields");
@@ -51,13 +48,16 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gradient-to-b from-white to-preskilet-silver/5">
       <Navbar />
 
       <div className="pt-28 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md mx-auto">
-          <div className="card-preskilet p-8 md:p-10 animate-scale-in shadow-md">
+          <div className="card-preskilet p-8 md:p-10 animate-scale-in shadow-lg bg-white backdrop-blur-sm border border-preskilet-silver/20">
             <div className="text-center mb-8">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-preskilet-turquoise/10 rounded-full mb-4">
+                <ShieldCheck size={32} className="text-preskilet-turquoise" />
+              </div>
               <h1 className="text-2xl font-bold text-preskilet-charcoal">
                 {isLogin ? "Welcome back" : "Create your account"}
               </h1>

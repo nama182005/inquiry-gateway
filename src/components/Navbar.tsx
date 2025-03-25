@@ -50,8 +50,8 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <span className="text-2xl font-semibold text-preskilet-charcoal">
-              <span className="text-preskilet-turquoise">Pres</span>kilet
+            <span className="text-2xl font-semibold text-skilltrack-charcoal">
+              <span className="text-skilltrack-blue">Skill</span>Track
             </span>
           </Link>
 
@@ -63,10 +63,10 @@ const Navbar = () => {
                 <Link
                   key={link.name}
                   to={link.path}
-                  className={`text-sm font-medium transition-colors hover:text-preskilet-turquoise ${
+                  className={`text-sm font-medium transition-colors hover:text-skilltrack-blue ${
                     location.pathname === link.path
-                      ? "text-preskilet-turquoise"
-                      : "text-preskilet-charcoal"
+                      ? "text-skilltrack-blue"
+                      : "text-skilltrack-charcoal"
                   }`}
                 >
                   {link.name}
@@ -82,8 +82,8 @@ const Navbar = () => {
                   to={link.path}
                   className={`flex items-center space-x-1.5 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                     link.name === "Login"
-                      ? "bg-preskilet-turquoise text-white hover:bg-preskilet-turquoise/90"
-                      : "text-preskilet-charcoal hover:bg-preskilet-silver/30"
+                      ? "bg-skilltrack-blue text-white hover:bg-skilltrack-blue/90"
+                      : "text-skilltrack-charcoal hover:bg-skilltrack-silver/30"
                   }`}
                 >
                   <link.icon size={16} />
@@ -98,7 +98,7 @@ const Navbar = () => {
             <button
               type="button"
               onClick={() => setIsOpen(!isOpen)}
-              className="text-preskilet-charcoal hover:text-preskilet-turquoise focus:outline-none"
+              className="text-skilltrack-charcoal hover:text-skilltrack-blue focus:outline-none"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -117,10 +117,10 @@ const Navbar = () => {
                   key={link.name}
                   to={link.path}
                   onClick={() => setIsOpen(false)}
-                  className={`text-base font-medium transition-colors hover:text-preskilet-turquoise ${
+                  className={`text-base font-medium transition-colors hover:text-skilltrack-blue ${
                     location.pathname === link.path
-                      ? "text-preskilet-turquoise"
-                      : "text-preskilet-charcoal"
+                      ? "text-skilltrack-blue"
+                      : "text-skilltrack-charcoal"
                   }`}
                 >
                   {link.name}
@@ -129,7 +129,7 @@ const Navbar = () => {
             </div>
 
             {/* Separator */}
-            <div className="border-t border-preskilet-silver/30"></div>
+            <div className="border-t border-skilltrack-silver/30"></div>
 
             {/* Auth Links */}
             <div className="flex flex-col space-y-3">
@@ -138,7 +138,7 @@ const Navbar = () => {
                   key={link.name}
                   to={link.path}
                   onClick={() => setIsOpen(false)}
-                  className="flex items-center space-x-2 text-base font-medium text-preskilet-charcoal hover:text-preskilet-turquoise transition-colors"
+                  className="flex items-center space-x-2 text-base font-medium text-skilltrack-charcoal hover:text-skilltrack-blue transition-colors"
                 >
                   <link.icon size={18} />
                   <span>{link.name}</span>

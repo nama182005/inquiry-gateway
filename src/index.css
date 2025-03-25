@@ -16,7 +16,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 215 25% 27%;
 
-    --primary: 180 87% 44%;
+    --primary: 200 97% 44%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 217 32% 17%;
@@ -33,7 +33,7 @@
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 180 87% 44%;
+    --ring: 200 97% 44%;
 
     --radius: 0.75rem;
   }
@@ -64,40 +64,40 @@
     @apply bg-white/70 backdrop-blur-sm border border-white/20 shadow-smooth;
   }
   
-  .btn-preskilet {
-    @apply bg-preskilet-turquoise text-white px-5 py-2.5 rounded-lg font-medium shadow-sm 
+  .btn-skilltrack {
+    @apply bg-skilltrack-blue text-white px-5 py-2.5 rounded-lg font-medium shadow-sm 
     hover:shadow-md transition-all duration-300 focus:outline-none focus:ring-2 
-    focus:ring-preskilet-turquoise/50 focus:ring-offset-2;
+    focus:ring-skilltrack-blue/50 focus:ring-offset-2;
   }
   
   .btn-secondary {
-    @apply bg-preskilet-silver text-preskilet-charcoal px-5 py-2.5 rounded-lg font-medium 
-    hover:bg-preskilet-silver/90 transition-all duration-300 focus:outline-none focus:ring-2 
-    focus:ring-preskilet-silver/50 focus:ring-offset-2;
+    @apply bg-skilltrack-silver text-skilltrack-charcoal px-5 py-2.5 rounded-lg font-medium 
+    hover:bg-skilltrack-silver/90 transition-all duration-300 focus:outline-none focus:ring-2 
+    focus:ring-skilltrack-silver/50 focus:ring-offset-2;
   }
   
-  .input-preskilet {
-    @apply bg-white border border-preskilet-silver/60 rounded-lg px-4 py-2.5 
-    focus:border-preskilet-turquoise focus:ring-1 focus:ring-preskilet-turquoise/50 
+  .input-skilltrack {
+    @apply bg-white border border-skilltrack-silver/60 rounded-lg px-4 py-2.5 
+    focus:border-skilltrack-blue focus:ring-1 focus:ring-skilltrack-blue/50 
     focus:outline-none transition-all duration-300;
   }
   
-  .card-preskilet {
-    @apply rounded-xl border border-preskilet-silver/20 shadow-card bg-white p-6 
+  .card-skilltrack {
+    @apply rounded-xl border border-skilltrack-silver/20 shadow-card bg-white p-6 
     hover:shadow-md transition-all duration-300;
   }
   
-  .badge-preskilet {
+  .badge-skilltrack {
     @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium 
-    bg-preskilet-turquoise/10 text-preskilet-turquoise;
+    bg-skilltrack-blue/10 text-skilltrack-blue;
   }
   
   .progress-bar {
-    @apply relative h-2 w-full bg-preskilet-silver/30 rounded-full overflow-hidden;
+    @apply relative h-2 w-full bg-skilltrack-silver/30 rounded-full overflow-hidden;
   }
   
   .progress-value {
-    @apply absolute left-0 top-0 h-full bg-preskilet-turquoise rounded-full;
+    @apply absolute left-0 top-0 h-full bg-skilltrack-blue rounded-full;
   }
 }
 

@@ -63,8 +63,8 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        preskilet: {
-          turquoise: "#0DD3D3",
+        skilltrack: {
+          blue: "#0D9ED3",
           navy: "#1A2238",
           charcoal: "#222831",
           silver: "#F1F2F6",

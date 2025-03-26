@@ -1,69 +1,66 @@
-# Welcome to your Lovable project
 
-## Project info
+# Aarush: Student Skill & Certification Tracking Platform
 
-**URL**: https://lovable.dev/projects/45f529c9-3f37-4302-a4e5-83d7083cf896
+## Project Overview
+Aarush is a modern web application for tracking student skills, certifications, and professional development.
 
-## How can I edit this code?
+### Technologies
+- React 18
+- TypeScript
+- Tailwind CSS
+- Shadcn UI
+- React Router
+- Tanstack React Query
 
-There are several ways of editing your application.
+## Prerequisites
+- Node.js (v18+)
+- npm or bun
 
-**Use Lovable**
+## Setup Instructions
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/45f529c9-3f37-4302-a4e5-83d7083cf896) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+1. Clone the repository
+```bash
+git clone <your-repo-url>
+cd aarush-project
 ```
 
-**Edit a file directly in GitHub**
+2. Install Dependencies
+```bash
+npm install
+# or
+bun install
+```
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+3. Run Development Server
+```bash
+npm run dev
+# or 
+bun run dev
+```
 
-**Use GitHub Codespaces**
+4. Build for Production
+```bash
+npm run build
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Project Structure
+- `src/pages/`: Main application pages
+- `src/components/`: Reusable UI components
+- `src/hooks/`: Custom React hooks
+- `src/lib/`: Utility functions
 
-## What technologies are used for this project?
+## Features
+- User Authentication
+- Skill Tracking
+- Certification Management
+- Responsive Design
 
-This project is built with .
+## Contributing
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/45f529c9-3f37-4302-a4e5-83d7083cf896) and click on Share -> Publish.
-
-## I want to use a custom domain - is that possible?
-
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+## License
+[Your License Here - e.g., MIT]

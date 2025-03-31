@@ -1,10 +1,19 @@
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import SkillCard from "../components/SkillCard";
-import CertificationCard from "../components/CertificationCard";
-import { Plus, Award, Briefcase, BarChart2, ChevronRight, Share2, User } from "lucide-react";
+import SkillProgressChart from "../components/SkillProgressChart";
 import { toast } from "sonner";
+import { 
+  ArrowUpRight, 
+  Award, 
+  BookOpen, 
+  BriefcaseIcon, 
+  GraduationCap, 
+  LayoutDashboard, 
+  Plus, 
+  User
+} from "lucide-react";
 
 // Mock data for skills
 const skillsData = [
@@ -64,238 +73,275 @@ const skillsData = [
   },
 ];
 
-// Mock data for certifications
-const certificationsData = [
-  {
-    id: "1",
-    name: "AWS Certified Developer",
-    issuer: "Amazon Web Services",
-    issueDate: "June 2023",
-    expiryDate: "June 2026",
-    credentialId: "AWS-DEV-12345",
-    credentialUrl: "#",
-    imageUrl: "https://d1.awsstatic.com/training-and-certification/certification-badges/AWS-Certified-Developer-Associate_badge.5c083fa855fe82c1cf2d0c8b883c265ec72a17c0.png",
-  },
-  {
-    id: "2",
-    name: "Google Data Analytics",
-    issuer: "Google",
-    issueDate: "March 2023",
-    credentialId: "GDA-98765",
-    credentialUrl: "#",
-  },
-  {
-    id: "3",
-    name: "Microsoft Azure Fundamentals",
-    issuer: "Microsoft",
-    issueDate: "January 2023",
-    expiryDate: "January 2025",
-    credentialId: "AZ-900-54321",
-    credentialUrl: "#",
-  },
+// Mock data for activity
+const activityData = [
+  { id: 1, title: "Completed AWS Developer Certification", type: "certification", date: "June 15, 2023" },
+  { id: 2, title: "Added skill: Web Development", type: "skill", date: "May 20, 2023" },
+  { id: 3, title: "Finished course: Full Stack Web Development", type: "course", date: "January 10, 2023" },
+  { id: 4, title: "Updated profile information", type: "profile", date: "December 5, 2022" },
+];
+
+// Mock data for recommended courses
+const recommendedCourses = [
+  { id: 1, title: "Machine Learning Fundamentals", provider: "Stanford Online", duration: "8 weeks", level: "Intermediate" },
+  { id: 2, title: "Advanced React Patterns", provider: "Frontend Masters", duration: "6 weeks", level: "Advanced" },
+  { id: 3, title: "Cloud Architecture with AWS", provider: "A Cloud Guru", duration: "10 weeks", level: "Intermediate" },
 ];
 
 const Dashboard = () => {
-  const [activeTab, setActiveTab] = useState("skills");
-  
-  // Mock user data
-  const user = {
-    name: "Alex Johnson",
-    email: "alex.johnson@example.com",
-    university: "State University",
-    major: "Computer Science",
-    graduationYear: "2024",
-    profileComplete: 80,
+  const [activeTab, setActiveTab] = useState("overview");
+
+  const handleAddSkill = () => {
+    toast.success("Skill form would open here. This is just a UI demo.");
   };
 
-  const handleShareProfile = () => {
-    // In a real app, this would generate or copy a shareable link
-    toast.success("Profile link copied to clipboard!");
+  const handleAddCertification = () => {
+    toast.success("Certification form would open here. This is just a UI demo.");
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gray-50">
       <Navbar />
-
+      
       <div className="pt-28 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          {/* Dashboard Header */}
-          <div className="mb-8">
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-              <div>
-                <h1 className="text-3xl font-bold text-preskilet-charcoal">Dashboard</h1>
-                <p className="mt-1 text-preskilet-gray">
-                  Manage your skills and certifications
-                </p>
-              </div>
-              <div className="mt-4 md:mt-0 flex space-x-3">
-                <button 
-                  onClick={handleShareProfile}
-                  className="btn-secondary flex items-center"
-                >
-                  <Share2 size={18} className="mr-1.5" />
-                  Share Profile
-                </button>
-                <Link to="/profile" className="btn-preskilet flex items-center">
-                  <User size={18} className="mr-1.5" />
-                  View Profile
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          {/* Overview Section */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            {/* Profile Completion */}
-            <div className="card-preskilet">
-              <h3 className="text-lg font-medium text-preskilet-charcoal mb-3">Profile Completion</h3>
-              <div className="mt-2">
-                <div className="flex items-center justify-between mb-1.5">
-                  <span className="text-sm text-preskilet-gray">Completion</span>
-                  <span className="text-sm font-medium text-preskilet-charcoal">{user.profileComplete}%</span>
-                </div>
-                <div className="progress-bar">
-                  <div
-                    className="progress-value transition-all duration-1000 ease-out"
-                    style={{ width: `${user.profileComplete}%` }}
-                  ></div>
-                </div>
-              </div>
-              <div className="mt-4 text-sm text-preskilet-gray">
-                Complete your profile to increase visibility to recruiters.
-              </div>
-            </div>
-
-            {/* Skills Overview */}
-            <div className="card-preskilet">
-              <h3 className="text-lg font-medium text-preskilet-charcoal mb-3">Skills</h3>
-              <div className="flex items-center text-3xl font-bold text-preskilet-charcoal">
-                <BarChart2 size={24} className="mr-2 text-preskilet-turquoise" />
-                {skillsData.length}
-              </div>
-              <div className="mt-2 text-sm text-preskilet-gray">
-                Track your skill proficiency and improvement over time.
-              </div>
-              <Link
-                to="#skills"
-                onClick={() => setActiveTab("skills")}
-                className="mt-4 flex items-center text-sm font-medium text-preskilet-turquoise hover:text-preskilet-turquoise/80"
-              >
-                <span>Manage Skills</span>
-                <ChevronRight size={16} className="ml-1" />
-              </Link>
-            </div>
-
-            {/* Certifications Overview */}
-            <div className="card-preskilet">
-              <h3 className="text-lg font-medium text-preskilet-charcoal mb-3">Certifications</h3>
-              <div className="flex items-center text-3xl font-bold text-preskilet-charcoal">
-                <Award size={24} className="mr-2 text-preskilet-turquoise" />
-                {certificationsData.length}
-              </div>
-              <div className="mt-2 text-sm text-preskilet-gray">
-                Showcase your completed courses and achievements.
-              </div>
-              <Link
-                to="#certifications"
-                onClick={() => setActiveTab("certifications")}
-                className="mt-4 flex items-center text-sm font-medium text-preskilet-turquoise hover:text-preskilet-turquoise/80"
-              >
-                <span>Manage Certifications</span>
-                <ChevronRight size={16} className="ml-1" />
-              </Link>
-            </div>
-          </div>
-
-          {/* Tabs */}
-          <div className="mb-6">
-            <div className="border-b border-preskilet-silver/30">
-              <nav className="flex space-x-8">
-                <button
-                  onClick={() => setActiveTab("skills")}
-                  className={`py-3 px-1 border-b-2 font-medium text-sm flex items-center space-x-2 ${
-                    activeTab === "skills"
-                      ? "border-preskilet-turquoise text-preskilet-turquoise"
-                      : "border-transparent text-preskilet-gray hover:text-preskilet-charcoal hover:border-preskilet-silver"
-                  }`}
-                >
-                  <Briefcase size={18} />
-                  <span>Skills</span>
-                </button>
-                <button
-                  onClick={() => setActiveTab("certifications")}
-                  className={`py-3 px-1 border-b-2 font-medium text-sm flex items-center space-x-2 ${
-                    activeTab === "certifications"
-                      ? "border-preskilet-turquoise text-preskilet-turquoise"
-                      : "border-transparent text-preskilet-gray hover:text-preskilet-charcoal hover:border-preskilet-silver"
-                  }`}
-                >
-                  <Award size={18} />
-                  <span>Certifications</span>
-                </button>
-              </nav>
-            </div>
-          </div>
-
-          {/* Tab Content */}
-          <div className="mt-6">
-            {activeTab === "skills" ? (
-              <>
-                <div className="flex justify-between items-center mb-6">
-                  <h2 className="text-2xl font-bold text-preskilet-charcoal">Your Skills</h2>
-                  <button className="btn-preskilet flex items-center">
-                    <Plus size={18} className="mr-1.5" />
-                    Add Skill
-                  </button>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {skillsData.map((skill) => (
-                    <SkillCard key={skill.id} skill={skill} />
-                  ))}
-                </div>
-                {skillsData.length === 0 && (
-                  <div className="text-center py-16">
-                    <Briefcase size={48} className="mx-auto text-preskilet-silver mb-4" />
-                    <h3 className="text-xl font-medium text-preskilet-charcoal mb-2">No skills added yet</h3>
-                    <p className="text-preskilet-gray mb-6">
-                      Start tracking your skills by adding your first skill
-                    </p>
-                    <button className="btn-preskilet flex items-center mx-auto">
-                      <Plus size={18} className="mr-1.5" />
-                      Add Your First Skill
-                    </button>
+          <div className="flex flex-col md:flex-row gap-8">
+            {/* Sidebar */}
+            <div className="w-full md:w-64 flex-shrink-0">
+              <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                <div className="p-5 border-b border-gray-200">
+                  <div className="flex items-center">
+                    <div className="w-12 h-12 bg-preskilet-turquoise/10 rounded-full flex items-center justify-center">
+                      <User className="text-preskilet-turquoise" />
+                    </div>
+                    <div className="ml-3">
+                      <h3 className="font-medium text-preskilet-charcoal">Alex Johnson</h3>
+                      <p className="text-xs text-preskilet-gray">Computer Science Student</p>
+                    </div>
                   </div>
-                )}
-              </>
-            ) : (
-              <>
-                <div className="flex justify-between items-center mb-6">
-                  <h2 className="text-2xl font-bold text-preskilet-charcoal">Your Certifications</h2>
-                  <button className="btn-preskilet flex items-center">
-                    <Plus size={18} className="mr-1.5" />
-                    Add Certification
-                  </button>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  {certificationsData.map((certification) => (
-                    <CertificationCard key={certification.id} certification={certification} />
-                  ))}
-                </div>
-                {certificationsData.length === 0 && (
-                  <div className="text-center py-16">
-                    <Award size={48} className="mx-auto text-preskilet-silver mb-4" />
-                    <h3 className="text-xl font-medium text-preskilet-charcoal mb-2">No certifications added yet</h3>
-                    <p className="text-preskilet-gray mb-6">
-                      Showcase your achievements by adding your certifications
-                    </p>
-                    <button className="btn-preskilet flex items-center mx-auto">
-                      <Plus size={18} className="mr-1.5" />
-                      Add Your First Certification
+                
+                <div className="p-3">
+                  <nav className="space-y-1">
+                    <button
+                      onClick={() => setActiveTab("overview")}
+                      className={`w-full text-left px-3 py-2 rounded-lg flex items-center text-sm font-medium ${
+                        activeTab === "overview" 
+                          ? "bg-preskilet-turquoise/10 text-preskilet-turquoise" 
+                          : "text-preskilet-charcoal hover:bg-gray-50"
+                      }`}
+                    >
+                      <LayoutDashboard size={18} className="mr-2" />
+                      Overview
                     </button>
+                    
+                    <button
+                      onClick={() => setActiveTab("profile")}
+                      className={`w-full text-left px-3 py-2 rounded-lg flex items-center text-sm font-medium ${
+                        activeTab === "profile" 
+                          ? "bg-preskilet-turquoise/10 text-preskilet-turquoise" 
+                          : "text-preskilet-charcoal hover:bg-gray-50"
+                      }`}
+                    >
+                      <User size={18} className="mr-2" />
+                      Profile
+                    </button>
+                    
+                    <button
+                      onClick={() => setActiveTab("skills")}
+                      className={`w-full text-left px-3 py-2 rounded-lg flex items-center text-sm font-medium ${
+                        activeTab === "skills" 
+                          ? "bg-preskilet-turquoise/10 text-preskilet-turquoise" 
+                          : "text-preskilet-charcoal hover:bg-gray-50"
+                      }`}
+                    >
+                      <GraduationCap size={18} className="mr-2" />
+                      Skills
+                    </button>
+                    
+                    <button
+                      onClick={() => setActiveTab("certifications")}
+                      className={`w-full text-left px-3 py-2 rounded-lg flex items-center text-sm font-medium ${
+                        activeTab === "certifications" 
+                          ? "bg-preskilet-turquoise/10 text-preskilet-turquoise" 
+                          : "text-preskilet-charcoal hover:bg-gray-50"
+                      }`}
+                    >
+                      <Award size={18} className="mr-2" />
+                      Certifications
+                    </button>
+                    
+                    <button
+                      onClick={() => setActiveTab("courses")}
+                      className={`w-full text-left px-3 py-2 rounded-lg flex items-center text-sm font-medium ${
+                        activeTab === "courses" 
+                          ? "bg-preskilet-turquoise/10 text-preskilet-turquoise" 
+                          : "text-preskilet-charcoal hover:bg-gray-50"
+                      }`}
+                    >
+                      <BookOpen size={18} className="mr-2" />
+                      Courses
+                    </button>
+                    
+                    <button
+                      onClick={() => setActiveTab("jobs")}
+                      className={`w-full text-left px-3 py-2 rounded-lg flex items-center text-sm font-medium ${
+                        activeTab === "jobs" 
+                          ? "bg-preskilet-turquoise/10 text-preskilet-turquoise" 
+                          : "text-preskilet-charcoal hover:bg-gray-50"
+                      }`}
+                    >
+                      <BriefcaseIcon size={18} className="mr-2" />
+                      Job Matches
+                    </button>
+                  </nav>
+                </div>
+              </div>
+              
+              <div className="mt-6 bg-gradient-to-br from-preskilet-turquoise to-preskilet-navy text-white rounded-xl p-5">
+                <h3 className="font-medium mb-2">Complete Your Profile</h3>
+                <p className="text-white/80 text-sm mb-4">Add skills and certifications to increase your profile strength.</p>
+                <div className="w-full bg-white/20 rounded-full h-2">
+                  <div className="bg-white h-2 rounded-full" style={{ width: "65%" }}></div>
+                </div>
+                <p className="text-xs mt-2 text-white/80">65% Complete</p>
+              </div>
+            </div>
+            
+            {/* Main Content */}
+            <div className="flex-1">
+              {activeTab === "overview" && (
+                <div className="space-y-6">
+                  {/* Top Cards */}
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                    <div className="bg-white p-5 rounded-xl border border-gray-200 shadow-sm">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <p className="text-preskilet-gray text-sm">Skills</p>
+                          <h3 className="text-2xl font-bold text-preskilet-charcoal">{skillsData.length}</h3>
+                        </div>
+                        <div className="w-10 h-10 bg-preskilet-turquoise/10 rounded-full flex items-center justify-center">
+                          <GraduationCap className="text-preskilet-turquoise" />
+                        </div>
+                      </div>
+                      <button 
+                        onClick={handleAddSkill}
+                        className="mt-4 text-preskilet-turquoise text-sm flex items-center"
+                      >
+                        <Plus size={16} className="mr-1" />
+                        Add Skill
+                      </button>
+                    </div>
+                    
+                    <div className="bg-white p-5 rounded-xl border border-gray-200 shadow-sm">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <p className="text-preskilet-gray text-sm">Certifications</p>
+                          <h3 className="text-2xl font-bold text-preskilet-charcoal">3</h3>
+                        </div>
+                        <div className="w-10 h-10 bg-preskilet-turquoise/10 rounded-full flex items-center justify-center">
+                          <Award className="text-preskilet-turquoise" />
+                        </div>
+                      </div>
+                      <button 
+                        onClick={handleAddCertification}
+                        className="mt-4 text-preskilet-turquoise text-sm flex items-center"
+                      >
+                        <Plus size={16} className="mr-1" />
+                        Add Certification
+                      </button>
+                    </div>
+                    
+                    <div className="bg-white p-5 rounded-xl border border-gray-200 shadow-sm">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <p className="text-preskilet-gray text-sm">Courses</p>
+                          <h3 className="text-2xl font-bold text-preskilet-charcoal">5</h3>
+                        </div>
+                        <div className="w-10 h-10 bg-preskilet-turquoise/10 rounded-full flex items-center justify-center">
+                          <BookOpen className="text-preskilet-turquoise" />
+                        </div>
+                      </div>
+                      <Link 
+                        to="#"
+                        className="mt-4 text-preskilet-turquoise text-sm flex items-center"
+                      >
+                        Find Courses
+                        <ArrowUpRight size={16} className="ml-1" />
+                      </Link>
+                    </div>
                   </div>
-                )}
-              </>
-            )}
+                  
+                  {/* Skill Progress Chart */}
+                  <SkillProgressChart skills={skillsData} />
+                  
+                  {/* Recent Activity */}
+                  <div className="bg-white p-5 rounded-xl border border-gray-200 shadow-sm">
+                    <h3 className="text-lg font-medium text-preskilet-charcoal mb-4">Recent Activity</h3>
+                    <div className="space-y-4">
+                      {activityData.map(activity => (
+                        <div key={activity.id} className="flex items-start">
+                          <div className="w-8 h-8 rounded-full flex-shrink-0 bg-preskilet-turquoise/10 flex items-center justify-center">
+                            {activity.type === "certification" && <Award size={16} className="text-preskilet-turquoise" />}
+                            {activity.type === "skill" && <GraduationCap size={16} className="text-preskilet-turquoise" />}
+                            {activity.type === "course" && <BookOpen size={16} className="text-preskilet-turquoise" />}
+                            {activity.type === "profile" && <User size={16} className="text-preskilet-turquoise" />}
+                          </div>
+                          <div className="ml-3">
+                            <p className="text-sm text-preskilet-charcoal">{activity.title}</p>
+                            <p className="text-xs text-preskilet-gray">{activity.date}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  {/* Recommended Courses */}
+                  <div className="bg-white p-5 rounded-xl border border-gray-200 shadow-sm">
+                    <div className="flex justify-between items-center mb-4">
+                      <h3 className="text-lg font-medium text-preskilet-charcoal">Recommended Courses</h3>
+                      <Link to="#" className="text-sm text-preskilet-turquoise">View All</Link>
+                    </div>
+                    <div className="space-y-4">
+                      {recommendedCourses.map(course => (
+                        <div key={course.id} className="p-4 border border-gray-100 rounded-lg hover:bg-gray-50 transition">
+                          <h4 className="font-medium text-preskilet-charcoal">{course.title}</h4>
+                          <div className="mt-2 flex flex-wrap gap-x-6 gap-y-1 text-xs text-preskilet-gray">
+                            <p>Provider: {course.provider}</p>
+                            <p>Duration: {course.duration}</p>
+                            <p>Level: {course.level}</p>
+                          </div>
+                          <div className="mt-3">
+                            <Link 
+                              to="#"
+                              className="text-preskilet-turquoise text-sm hover:underline"
+                            >
+                              View Course
+                            </Link>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+              
+              {activeTab !== "overview" && (
+                <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+                  <h2 className="text-xl font-medium text-preskilet-charcoal mb-4">
+                    {activeTab === "profile" && "Edit Profile"}
+                    {activeTab === "skills" && "Manage Skills"}
+                    {activeTab === "certifications" && "Manage Certifications"}
+                    {activeTab === "courses" && "My Courses"}
+                    {activeTab === "jobs" && "Job Matches"}
+                  </h2>
+                  <p className="text-preskilet-gray">
+                    This is a placeholder for the {activeTab} section. In a full implementation, 
+                    this would contain the appropriate forms and content.
+                  </p>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

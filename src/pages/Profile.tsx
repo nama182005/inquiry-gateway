@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
@@ -6,6 +5,7 @@ import SkillCard from "../components/SkillCard";
 import CertificationCard from "../components/CertificationCard";
 import { Download, Link2, Share2, ChevronDown, ChevronUp, User } from "lucide-react";
 import { toast } from "sonner";
+import { generateResume } from "../utils/resumeGenerator";
 
 // Mock data for skills
 const skillsData = [
@@ -113,12 +113,31 @@ const Profile = () => {
 
   const handleShareProfile = () => {
     // In a real app, this would copy the link or open a share dialog
-    toast.success("Profile link copied to clipboard!");
+    // Mock implementation
+    navigator.clipboard.writeText(user.profileLink).then(() => {
+      toast.success("Profile link copied to clipboard!");
+    }).catch(() => {
+      toast.error("Failed to copy link. Please try again.");
+    });
   };
 
   const handleDownloadResume = () => {
-    // In a real app, this would download the resume
-    toast.success("Downloading resume...");
+    // Call the resume generator with user data
+    try {
+      generateResume({
+        name: user.name,
+        email: user.email,
+        university: user.university,
+        major: user.major,
+        graduationYear: user.graduationYear,
+        bio: user.bio,
+        skills: skillsData,
+        certifications: certificationsData
+      });
+      toast.success("Generating your resume...");
+    } catch (error) {
+      toast.error("Failed to generate resume. Please try again.");
+    }
   };
 
   return (
